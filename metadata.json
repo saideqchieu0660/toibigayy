@@ -1,0 +1,8 @@
+{
+  "name": "HENOSIS",
+  "description": "Elegant, exclusive, high-end AI learning platform featuring smart flashcards, chatbot tutoring, and comprehensive dashboards under a premium golden aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
