@@ -1,51 +1,7 @@
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("com.google.devtools.ksp")
-    id("com.google.gms.google-services")
-}
-android {
-  namespace = "com.aistudio.stemflashcards.qzvxts2"
-  compileSdk = 35
-
-  defaultConfig {
-    applicationId = "com.aistudio.stemflashcards.qzvxts2"
-    minSdk = 26
-    targetSdk = 34
-    versionCode = 1
-    versionName = "1.0"
-
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes {
-    release {
-      isMinifyEnabled = false
-      proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-    }
-  }
-  
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-  }
-
-  buildFeatures {
-    compose = true
-  }
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
-  compilerOptions {
-    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
-  }
-}
-
 dependencies {
-  // Firebase BoM & AI
-  implementation(platform(libs.firebase.bom))
-  implementation(libs.firebase.ai)
+  // Firebase BoM & AI (Đã thay libs bằng version cứng)
+  implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+  implementation("com.google.firebase:firebase-ai")
   
   // Google Sign-In & Auth SDK
   implementation("com.google.android.gms:play-services-auth:21.2.0")
@@ -66,17 +22,17 @@ dependencies {
   implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
   implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
-  // Room Database
-  implementation(libs.androidx.room.runtime)
-  implementation(libs.androidx.room.ktx)
-  ksp(libs.androidx.room.compiler)
+  // Room Database (Đã thay libs bằng version cứng)
+  implementation("androidx.room:room-runtime:2.6.1")
+  implementation("androidx.room:room-ktx:2.6.1")
+  ksp("androidx.room:room-compiler:2.6.1")
 
-  // Networking & Image Loading
-  implementation(libs.retrofit)
-  implementation(libs.converter.moshi)
-  implementation(libs.okhttp)
-  implementation(libs.logging.interceptor)
-  implementation(libs.coil.compose)
+  // Networking & Image Loading (Đã thay libs bằng version cứng)
+  implementation("com.squareup.retrofit2:retrofit:2.9.0")
+  implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+  implementation("com.squareup.okhttp3:okhttp:4.12.0")
+  implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+  implementation("io.coil-kt:coil-compose:2.6.0")
 
   // Utilities
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
@@ -91,15 +47,15 @@ dependencies {
   implementation("androidx.camera:camera-view:1.4.0")
   implementation("androidx.camera:camera-core:1.4.0")
 
-  // Local Testing
-  testImplementation(libs.junit)
-  testImplementation(libs.robolectric)
-  testImplementation(libs.roborazzi)
-  testImplementation(libs.roborazzi.compose)
-  testImplementation(libs.roborazzi.junit.rule)
+  // Local Testing (Đã thay libs bằng version cứng)
+  testImplementation("junit:junit:4.13.2")
+  testImplementation("org.robolectric:robolectric:4.13")
+  testImplementation("io.github.takahirom.roborazzi:roborazzi:0.16.0")
+  testImplementation("io.github.takahirom.roborazzi:roborazzi-compose:0.16.0")
+  testImplementation("io.github.takahirom.roborazzi:roborazzi-junit-rule:0.16.0")
 
-  // Instrumented Testing
-  androidTestImplementation(libs.androidx.junit)
+  // Instrumented Testing (Đã thay libs bằng version cứng)
+  androidTestImplementation("androidx.test.ext:junit:1.2.1")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
   androidTestImplementation(platform("androidx.compose:compose-bom:2024.10.01"))
   androidTestImplementation("androidx.compose.ui:ui-test-junit4")
