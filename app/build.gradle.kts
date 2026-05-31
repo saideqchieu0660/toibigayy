@@ -38,10 +38,10 @@ android {
   }
 }
 
-// Cú pháp tối thượng để ép jvmTarget lên Java 11 cho mọi tác vụ Kotlin, không lo lỗi infer type
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-  kotlinOptions {
-    jvmTarget = "11"
+// Cú pháp tối thượng hợp pháp 100% của Gradle 9+ để ép jvmTarget lên Java 11 không bao giờ bị deprecated
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>().configureEach {
+  compilerOptions {
+    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
   }
 }
 
