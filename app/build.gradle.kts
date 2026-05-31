@@ -31,20 +31,20 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    // ĐÂY LÀ DÒNG FIX LỖI CHO KOTLIN
     kotlinOptions {
         jvmTarget = "17"
     }
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
     implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-vertexai") // ĐÂY LÀ DÒNG FIX AI
+    implementation("com.google.firebase:firebase-vertexai")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     
     implementation("androidx.core:core-ktx:1.15.0")
@@ -65,6 +65,8 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
 
+    implementation("com.squareup.moshi:moshi:1.15.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
