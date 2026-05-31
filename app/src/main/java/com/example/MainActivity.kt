@@ -1,4 +1,4 @@
-package com.example
+package com.aistudio.stemflashcards.qzvxts2
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -38,17 +38,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.data.database.FlashcardEntity
-import com.example.data.database.StudyAnalyticEntity
-import com.example.data.repository.MindMapEntity
-import com.example.ui.MainViewModel
-import com.example.ui.StudyGroupScreen
-import com.example.ui.formatScienceText
-import com.example.ui.theme.MyApplicationTheme
 import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.*
 import com.google.firebase.FirebaseApp
+import com.aistudio.stemflashcards.qzvxts2.R
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
