@@ -106,3 +106,4 @@ dependencies {
   debugImplementation(libs.androidx.compose.ui.tooling)
   debugImplementation(libs.androidx.compose.ui.test-manifest)
 }
+// force trigger fix 22 errors
