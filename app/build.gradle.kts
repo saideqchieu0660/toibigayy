@@ -33,8 +33,11 @@ android {
     targetCompatibility = JavaVersion.VERSION_11
   }
 
-  kotlinOptions {
-    jvmTarget = "11"
+  // Cú pháp AGP chuẩn để ép Java 11 cho Kotlin mà không bị lỗi Unresolved reference
+  compilerOptions {
+    configureEach {
+      jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+    }
   }
 
   buildFeatures {
@@ -51,7 +54,7 @@ dependencies {
   implementation("com.google.android.gms:play-services-auth:21.2.0")
   implementation("com.google.firebase:firebase-auth")
 
-  // Core AndroidX & Compose (Hardcoded chuỗi string cứng để bứng sạch lỗi gạch ngang catalog)
+  // Core AndroidX & Compose
   implementation("androidx.core:core-ktx:1.15.0")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
   implementation("androidx.activity:activity-compose:1.9.3")
@@ -98,7 +101,7 @@ dependencies {
   testImplementation(libs.roborazzi.compose)
   testImplementation(libs.roborazzi.junit.rule)
 
-  // Instrumented Testing (Bứng nốt lỗi espresso-core gạch ngang)
+  // Instrumented Testing
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
   androidTestImplementation(platform("androidx.compose:compose-bom:2024.10.01"))
