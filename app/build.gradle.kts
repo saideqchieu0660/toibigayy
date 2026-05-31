@@ -27,20 +27,23 @@ android {
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
   }
+  
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
   }
+
   kotlinOptions {
     jvmTarget = "11"
   }
+
   buildFeatures {
     compose = true
   }
 }
 
 dependencies {
-  // Firebase BoM
+  // Firebase BoM & AI
   implementation(platform(libs.firebase.bom))
   implementation(libs.firebase.ai)
   
@@ -48,20 +51,20 @@ dependencies {
   implementation("com.google.android.gms:play-services-auth:21.2.0")
   implementation("com.google.firebase:firebase-auth")
 
-  // Core AndroidX & Compose
-  implementation(libs.androidx.core-ktx)
-  implementation(libs.androidx.lifecycle.runtime-ktx)
-  implementation(libs.androidx.activity-compose)
-  implementation(platform(libs.androidx.compose-bom))
-  implementation(libs.androidx.compose.ui)
-  implementation(libs.androidx.compose.ui.graphics)
-  implementation(libs.androidx.compose.ui.tooling.preview)
-  implementation(libs.androidx.compose.material3)
-  implementation(libs.androidx.compose.material.icons.core)
-  implementation(libs.androidx.compose.material.icons.extended)
-  implementation(libs.androidx.navigation.compose)
-  implementation(libs.androidx.lifecycle.runtime-compose)
-  implementation(libs.androidx.lifecycle.viewmodel-compose)
+  // Core AndroidX & Compose (Hardcoded chuỗi string cứng để bứng sạch lỗi gạch ngang catalog)
+  implementation("androidx.core:core-ktx:1.15.0")
+  implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
+  implementation("androidx.activity:activity-compose:1.9.3")
+  implementation(platform("androidx.compose:compose-bom:2024.10.01"))
+  implementation("androidx.compose.ui:ui")
+  implementation("androidx.compose.ui:ui-graphics")
+  implementation("androidx.compose.ui:ui-tooling-preview")
+  implementation("androidx.compose.material3:material3")
+  implementation("androidx.compose.material:material-icons-core")
+  implementation("androidx.compose.material:material-icons-extended")
+  implementation("androidx.navigation:navigation-compose:2.8.5")
+  implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+  implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
 
   // Room Database
   implementation(libs.androidx.room.runtime)
@@ -76,17 +79,17 @@ dependencies {
   implementation(libs.coil.compose)
 
   // Utilities
-  implementation(libs.kotlinx.coroutines.android)
-  implementation(libs.kotlinx.coroutines.core)
-  implementation(libs.accompanist.permissions)
-  implementation(libs.play.services-location)
-  implementation(libs.androidx.datastore.preferences)
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+  implementation("com.google.accompanist:accompanist-permissions:0.36.0")
+  implementation("com.google.android.gms:play-services-location:21.3.0")
+  implementation("androidx.datastore:datastore-preferences:1.1.1")
 
   // CameraX
-  implementation(libs.androidx.camera.camera2)
-  implementation(libs.androidx.camera.lifecycle)
-  implementation(libs.androidx.camera.view)
-  implementation(libs.androidx.camera.core)
+  implementation("androidx.camera:camera-camera2:1.4.0")
+  implementation("androidx.camera:camera-lifecycle:1.4.0")
+  implementation("androidx.camera:camera-view:1.4.0")
+  implementation("androidx.camera:camera-core:1.4.0")
 
   // Local Testing
   testImplementation(libs.junit)
@@ -95,15 +98,14 @@ dependencies {
   testImplementation(libs.roborazzi.compose)
   testImplementation(libs.roborazzi.junit.rule)
 
-  // Instrumented Testing
+  // Instrumented Testing (Bứng nốt lỗi espresso-core gạch ngang)
   androidTestImplementation(libs.androidx.junit)
-  androidTestImplementation(libs.androidx.espresso-core)
-  androidTestImplementation(platform(libs.androidx.compose-bom))
-  androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-  androidTestImplementation(libs.kotlinx.coroutines.test)
-  androidTestImplementation(libs.androidx.core)
-  androidTestImplementation(libs.androidx.runner)
-  debugImplementation(libs.androidx.compose.ui.tooling)
-  debugImplementation(libs.androidx.compose.ui.test-manifest)
+  androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+  androidTestImplementation(platform("androidx.compose:compose-bom:2024.10.01"))
+  androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+  androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
+  androidTestImplementation("androidx.core:core-ktx:1.15.0")
+  androidTestImplementation("androidx.test:runner:1.6.2")
+  debugImplementation("androidx.compose.ui:ui-tooling")
+  debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
-// force trigger fix 22 errors
