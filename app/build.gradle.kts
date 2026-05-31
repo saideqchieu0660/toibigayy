@@ -31,6 +31,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    // ĐÂY LÀ DÒNG FIX LỖI CHO KOTLIN
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
     buildFeatures {
         compose = true
     }
@@ -39,6 +44,7 @@ android {
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-vertexai") // ĐÂY LÀ DÒNG FIX AI
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     
     implementation("androidx.core:core-ktx:1.15.0")
