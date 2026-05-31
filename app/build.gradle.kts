@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.10.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-vertexai") // ĐÂY LÀ DÒNG FIX AI
     implementation("com.google.android.gms:play-services-auth:21.2.0")
