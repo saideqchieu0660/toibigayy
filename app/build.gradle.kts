@@ -33,15 +33,15 @@ android {
     targetCompatibility = JavaVersion.VERSION_11
   }
 
-  // Cú pháp AGP chuẩn để ép Java 11 cho Kotlin mà không bị lỗi Unresolved reference
-  compilerOptions {
-    configureEach {
-      jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
-    }
-  }
-
   buildFeatures {
     compose = true
+  }
+}
+
+// Cú pháp tối thượng để ép jvmTarget lên Java 11 cho mọi tác vụ Kotlin, không lo lỗi infer type
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+  kotlinOptions {
+    jvmTarget = "11"
   }
 }
 
